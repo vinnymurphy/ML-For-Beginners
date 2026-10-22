@@ -1,0 +1,46 @@
+{
+  "title": "The History of Machine Learning",
+  "description": "Key historical discoveries, foundational concepts, and eras in the evolution of machine learning and artificial intelligence.",
+  "events": [
+    {
+      "date": "1763",
+      "title": "Bayes' Theorem",
+      "description": "Thomas Bayes' theorem and its predecessors laid foundational statistical methods that underlie inference, describing the probability of an event occurring based on prior knowledge."
+    },
+    {
+      "date": "1805",
+      "title": "Least Squares Theory",
+      "description": "Introduced by French mathematician Adrien-Marie Legendre, this theory provides a standard approach in regression analysis for data fitting by minimizing the sum of squared residuals."
+    },
+    {
+      "date": "1913",
+      "title": "Markov Chains",
+      "description": "Named after Russian mathematician Andrey Markov, these stochastic models describe a sequence of possible events where the probability of each event depends only on the state attained in the previous event."
+    },
+    {
+      "date": "1950",
+      "title": "Turing Test & Thinking Machines",
+      "description": "Alan Turing helped lay the foundation for artificial intelligence and proposed the Turing Test to empirically evaluate whether a machine can exhibit intelligent behavior indistinguishable from a human."
+    },
+    {
+      "date": "1956",
+      "title": "Dartmouth Summer Research Project",
+      "description": "A seminal event organized by John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon where the term 'artificial intelligence' was officially coined."
+    },
+    {
+      "date": "1957",
+      "title": "The Perceptron",
+      "description": "Invented by American psychologist Frank Rosenblatt, the Perceptron is an early type of linear classifier that laid crucial groundwork for modern deep learning architectures."
+    },
+    {
+      "date": "1956 - 1974",
+      "title": "The Golden Years of AI",
+      "description": "A period of high optimism where AI research flourished in natural language processing and search, driven by the belief that intelligent machines could soon be fully realized."
+    },
+    {
+      "date": "Mid 1970s",
+      "title": "The First AI Winter",
+      "description": "Optimism slowed and funding dried up as researchers confronted severe limitations including lack of computing power, combinatorial explosion of parameters, and data scarcity."
+    }
+  ]
+}
