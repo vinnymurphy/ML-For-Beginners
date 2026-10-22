@@ -1,28 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>Machine Learning for Beginners</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Introduction to Machine Learning for Beginners">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The History of Machine Learning Timeline</title>
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col items-center py-10 px-4">
 
-<body>
-  <div id="app"></div>
+  <!-- Header Section -->
+  <header class="max-w-3xl w-full text-center mb-12">
+    <h1 id="timeline-title" class="text-4xl font-extrabold tracking-tight text-slate-900 mb-3">Loading Timeline...</h1>
+    <p id="timeline-desc" class="text-lg text-slate-600">Please wait while the timeline data is loaded.</p>
+  </header>
+
+  <!-- Timeline Container -->
+  <main class="max-w-3xl w-full">
+    <div id="timeline-events" class="relative border-l-2 border-indigo-200 ml-4 space-y-10 pl-6">
+      <!-- Dynamic events will be inserted here -->
+    </div>
+  </main>
+
+  <!-- Script to load and render JSON -->
   <script>
-    window.$docsify = {
-      name: 'Machine Learning for Beginners',
-      repo: 'https://github.com/Microsoft/ML-For-Beginners',
-      relativePath: true,
-      auto2top: true,
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-</body>
+    async function loadTimeline() {
+      try {
+        // Replace this URL with the path to your hosted history-of-ml.json file
+        const response = await fetch('history-of-ml.json');
+        const data = await response.json();
 
+        // Populate Header info
+        document.getElementById('timeline-title').textContent = data.title;
+        document.getElementById('timeline-desc').textContent = data.description;
+
+        // Populate Events
+        const container = document.getElementById('timeline-events');
+        container.innerHTML = ''; // clear loader
+
+        data.events.forEach((event, index) => {
+          const eventEl = document.createElement('div');
+          eventEl.className = 'relative group';
+
+          eventEl.innerHTML = `
+            <!-- Timeline dot -->
+            <span class="absolute -left-[31px] top-1.5 h-4 w-4 rounded-full border-2 border-indigo-600 bg-white group-hover:bg-indigo-600 transition-colors"></span>
+
+            <!-- Date badge -->
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full mb-2">
+              ${event.date}
+            </span>
+
+            <!-- Content Card -->
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+              <h3 class="text-xl font-bold text-slate-900 mb-1">${event.title}</h3>
+              <p class="text-slate-600 leading-relaxed">${event.description}</p>
+            </div>
+          `;
+
+          container.appendChild(eventEl);
+        });
+
+      } catch (error) {
+        console.error('Error loading timeline data:', error);
+        document.getElementById('timeline-title').textContent = 'Failed to load timeline';
+        document.getElementById('timeline-desc').textContent = 'Could not fetch history-of-ml.json. Please check the file path.';
+      }
+    }
+
+    loadTimeline();
+  </script>
+
+</body>
 </html>
